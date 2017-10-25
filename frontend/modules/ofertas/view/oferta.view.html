@@ -1,0 +1,49 @@
+<br/>
+<div id="contenido" class="row">
+    <br>
+    <div class="off_izq">
+        <div class="title"><h2>Oferta</h2></div>
+        <div class="control-group">
+            Lugar de encuentro: {{data.lugar_inicio}}
+        </div>
+        <div class="control-group">
+            Lugar de la actividad: {{data.lugar_final}}
+        </div>
+        <div class="control-group">
+            Hora: {{data.hora_inicio}} - {{data.hora_final}}
+        </div>
+        <div class="control-group">
+            Día: {{data.fecha_inicio}}
+        </div>
+        <div class="control-group">
+            Descripción: {{data.descripcion}}
+        </div>
+        <div class="control-group">
+            Asistentes:
+            <div class="asistentes">
+                <div class="asis" ng-repeat="as in data.asistentes" > <a href="#/profile/{{as}}">{{as}}</a></div>
+                <div class="asis join" ng-click="join()" ng-show="UneteV"> Únete a ellos</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="off_der">
+        <div class="title"><h2>Acompañante</h2></div>
+        <div class="control-group av">
+            <img id="off_avatar" src="{{usuario.avatar}}" />
+        </div>
+        <div class="control-group">
+            Nombre: {{usuario.nombre}} {{usuario.apellidos}}
+        </div>
+        <div class="control-group">
+            Valoración: <div class="rank">
+                <div class="heart" ng-repeat="i in getTimes(usuario.rankYes) track by $index" ><img src="frontend/assets/media/2.PNG"/></div>
+                <div class="heart" ng-repeat="i in getTimes(usuario.rankNo) track by $index"  ><img src="frontend/assets/media/1.PNG"/></div>
+            </div>
+        </div>
+        <div class="control-group buttons">
+            <div class="button special">Enviar mensaje</div>   
+            <div class="button special">Agregar como amigo</div>   
+        </div>
+    </div>
+</div>
