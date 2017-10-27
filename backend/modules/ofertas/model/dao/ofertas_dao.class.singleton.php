@@ -13,30 +13,23 @@ class ofertas_dao {
     }
 
     public function create_ofertas_DAO($db, $arrArgument) {
-        /* $usuario = $arrArgument['usuario'];
-          $dni = $arrArgument['dni'];
-          $nombre = $arrArgument['nombre'];
-          $apellidos = $arrArgument['apellidos'];
-          $email = $arrArgument['email'];
-          $password = $arrArgument['password'];
-          $date_birthday = $arrArgument['date_birthday'];
-          $tipo = $arrArgument['tipo'];
-          $bank = $arrArgument['bank'];
-          $avatar = $arrArgument['avatar'];
-          $pais = " ";
-          $provincia = " ";
-          $poblacion = " ";
-          $valoracion = " ";
-          $token = $arrArgument['token'];
-          if ($arrArgument['activado'])
-          $activado = $arrArgument['activado'];
-          else
-          $activado = 0;
+         /*$name = $arrArgument['name'];
+          $type = $arrArgument['type'];
+          $price = $arrArgument['price'];
+          $status = $arrArgument['status'];
+          $latitude = $arrArgument['latitude'];
+          $longitude = $arrArgument['longitude'];
+          $date = $arrArgument['date'];
+          $marca = $arrArgument['marca'];
+          $picture = $arrArgument['picture'];
+          $description = $arrArgument['description'];
+          $location = $arrArgument['location'];
+          
 
-          $sql = "INSERT INTO usuarios (usuario, email, nombre, apellidos, dni,"
-          . " password, date_birthday, tipo, bank, pais, provincia, poblacion, avatar, valoracion, activado, token"
-          . " ) VALUES ('$usuario', '$email', '$nombre',"
-          . " '$apellidos', '$dni', '$password', '$date_birthday', '$tipo', '$bank','$pais','$provincia','$poblacion', '$avatar', '$valoracion', '$activado','$token')";
+          $sql = "INSERT INTO computer (name, type, price, status, latitude,"
+          . " longitude, date, marca, picture, description, location"
+          . " ) VALUES ('$name', '$type', '$price',"
+          . " '$status', '$latitude', '$longitude', '$date', '$marca', '$picture','$description','$location')";
 
 
           return $db->ejecutar($sql); */
@@ -48,7 +41,7 @@ class ofertas_dao {
          * custom sql to select with the needed arguments
          */
         $i = count($arrArgument['column']);
-        $sql = "SELECT COUNT(*) as total FROM ofertas WHERE ";
+        $sql = "SELECT COUNT(*) as total FROM computer WHERE ";
         for ($j = 0; $j < $i; $j++) {
             if ($i > 1 && $j != 0)
                 $sql.=" AND ";
@@ -62,7 +55,7 @@ class ofertas_dao {
         $i = count($arrArgument['column']);
         $k = count($arrArgument['field']);
         $sql1 = "SELECT ";
-        $sql2 = " FROM ofertas WHERE ";
+        $sql2 = " FROM computer WHERE ";
       
         if ($arrArgument['column'][0] != 'false')
             for ($j = 0; $j < $i; $j++) {
@@ -80,8 +73,9 @@ class ofertas_dao {
         if ($arrArgument['column'][0] != 'false')
             $sql = $sql1 . $fields . $sql2 . $sql;
         else
-            $sql = $sql1 . $fields . ' FROM ofertas';
+            $sql = $sql1 . $fields . ' FROM computer';
 
+       
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }
@@ -97,7 +91,7 @@ class ofertas_dao {
         $i = count($arrArgument['field']);
         $k = count($arrArgument['column']);
 
-        $sql1 = "UPDATE ofertas SET ";
+        $sql1 = "UPDATE computer SET ";
         $sql2 = "  WHERE ";
 
         for ($j = 0; $j < $i; $j++) {

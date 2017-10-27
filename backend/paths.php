@@ -1,16 +1,16 @@
 <?php
 //PROYECTO
-define('PROJECT', '/2DAW_Poyecto/backend');
+define('PROJECT', '/2DAW_Proyecto/backend');
 
 //SITE_ROOT
 define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] . PROJECT);
 
 //SITE_PATH
-define('SITE_PATH', 'https://' . $_SERVER['HTTP_HOST'] . PROJECT);
+define('SITE_PATH', 'http://' . $_SERVER['HTTP_HOST'] . PROJECT);
 
-//log
-define('USER_LOG_DIR', SITE_ROOT . '/log/user/Site_User_errors.log');
-define('GENERAL_LOG_DIR', SITE_ROOT . '/log/general/Site_General_errors.log');
+// //log
+// define('USER_LOG_DIR', SITE_ROOT . '/log/user/Site_User_errors.log');
+// define('GENERAL_LOG_DIR', SITE_ROOT . '/log/general/Site_General_errors.log');
 
 //production
 define('PRODUCTION', true);

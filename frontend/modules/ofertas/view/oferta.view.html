@@ -4,30 +4,43 @@
     <div class="off_izq">
         <div class="title"><h2>Oferta</h2></div>
         <div class="control-group">
-            Lugar de encuentro: {{data.lugar_inicio}}
+            Nombre del componente: {{data.name}}
         </div>
         <div class="control-group">
-            Lugar de la actividad: {{data.lugar_final}}
+            Type de componente: {{data.type}}
         </div>
         <div class="control-group">
-            Hora: {{data.hora_inicio}} - {{data.hora_final}}
+            Precio: {{data.price}}
         </div>
         <div class="control-group">
-            Día: {{data.fecha_inicio}}
+            Día: {{data.status}}
         </div>
         <div class="control-group">
-            Descripción: {{data.descripcion}}
+            Fecha de ingreso: {{data.date}}
         </div>
         <div class="control-group">
-            Asistentes:
-            <div class="asistentes">
-                <div class="asis" ng-repeat="as in data.asistentes" > <a href="#/profile/{{as}}">{{as}}</a></div>
-                <div class="asis join" ng-click="join()" ng-show="UneteV"> Únete a ellos</div>
-            </div>
+            marca: {{data.marca}}
         </div>
+        <div class="control-group">
+            Localización: {{data.location}}
+        </div>
+        <div class="control-group">
+            Descripción: {{data.description}}
+        </div>
+        <div class="control-group">
+           <img src="{{data.picture}}" alt="" width="25%" height="25%">
+        </div>
+       <!-- <div id='ubicacion'></div>
+        <div id="mapholder"></div>
+         <div class="control-group">
+             <img src="{{data.latitude}}" alt="" width="25%" height="25%">
+         </div>
+         <div class="control-group">
+             <img src="{{data.longitude}}" alt="" width="25%" height="25%">
+        </div> -->
     </div>
 
-    <div class="off_der">
+    <!-- <div class="off_der">
         <div class="title"><h2>Acompañante</h2></div>
         <div class="control-group av">
             <img id="off_avatar" src="{{usuario.avatar}}" />
@@ -45,5 +58,5 @@
             <div class="button special">Enviar mensaje</div>   
             <div class="button special">Agregar como amigo</div>   
         </div>
-    </div>
+    </div> -->
 </div>

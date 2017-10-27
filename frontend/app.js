@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
@@ -18,8 +18,8 @@ app.config(['$routeProvider',
                         }
                     }
                 })
-                .when("/ofertas/:id", {
-                    templateUrl: "frontend/modules/ofertas/view/oferta.view.html",
+                .when("/ofertas/:id1", {
+                    templateUrl: "frontend/modules/ofertas/view/main.view.html",
                     controller: "detailsCtrl",
                     resolve: {
                         data: function (services, $route) {
@@ -28,10 +28,26 @@ app.config(['$routeProvider',
                     }
                 })
 
+                .when("/oferta/:id2", {
+                    templateUrl: "frontend/modules/ofertas/view/oferta.detail.html",
+                    controller: "detailsCtrl",
+                    resolve: {
+                        data: function (services, $route) {
+                            return services.get('ofertas', 'getOffer', $route.current.params.id);
+                        }
+                    }
+                })
+
+                
                 // else 404
                 .otherwise("/", {templateUrl: "frontend/modules/main/view/main.view.html", controller: "mainCtrl"});
 
+               
                 
     }]);
+
+    /*app.controller('mainController', function() {
+        console.log("hola");
+     });*/
 
    
