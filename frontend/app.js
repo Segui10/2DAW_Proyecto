@@ -18,8 +18,11 @@ app.config(['$routeProvider',
                         }
                     }
                 })
-                .when("/ofertas/:id1", {
-                    templateUrl: "frontend/modules/ofertas/view/main.view.html",
+
+                
+
+                .when("/ofertas/:id", {
+                    templateUrl: "frontend/modules/ofertas/view/oferta.view.html",
                     controller: "detailsCtrl",
                     resolve: {
                         data: function (services, $route) {
@@ -28,26 +31,22 @@ app.config(['$routeProvider',
                     }
                 })
 
-                .when("/oferta/:id2", {
-                    templateUrl: "frontend/modules/ofertas/view/oferta.detail.html",
-                    controller: "detailsCtrl",
+                .when("/oferta/:type", {
+                    templateUrl: "frontend/modules/ofertas/view/main.view.html",
+                    controller:"ofertasCtrl",
                     resolve: {
-                        data: function (services, $route) {
-                            return services.get('ofertas', 'getOffer', $route.current.params.id);
+                        ofertas: function (services, $route) {
+                            return services.get('ofertas', 'getCategory', $route.current.params.type);
                         }
                     }
                 })
+
+               
 
                 
                 // else 404
                 .otherwise("/", {templateUrl: "frontend/modules/main/view/main.view.html", controller: "mainCtrl"});
 
-               
-                
     }]);
-
-    /*app.controller('mainController', function() {
-        console.log("hola");
-     });*/
 
    
