@@ -1,9 +1,11 @@
 app.controller('menuCtrl', function ($scope, $uibModal, UserService, $rootScope, $anchorScroll) {
+    console.log("modal");
     UserService.login();
     $rootScope.bannerV = false;
     $rootScope.bannerText = "";
 
     $scope.open = function () {
+        console.log("modal");
         var modalInstance = $uibModal.open({
             animation: 'true',
             templateUrl: 'frontend/modules/user/view/modal.view.html',
