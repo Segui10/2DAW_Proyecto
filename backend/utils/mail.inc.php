@@ -94,7 +94,7 @@ function enviar_email($arr) {
         $mail = email::getInstance();
         $mail->name = $arr['inputName'];
         if ($arr['type'] === 'admin')
-            $mail->address = 'ruralshoponti@gmail.com';
+            $mail->address = 'computersshop2daw@gmail.com ';
         else
             $mail->address = $arr['inputEmail'];
         $mail->subject = $subject;

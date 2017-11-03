@@ -26,6 +26,7 @@ app.config(['$routeProvider',
                     controller: "detailsCtrl",
                     resolve: {
                         data: function (services, $route) {
+                            console.log($route);
                             return services.get('ofertas', 'getOffer', $route.current.params.id);
                         }
                     }
@@ -42,6 +43,27 @@ app.config(['$routeProvider',
                 })
 
                
+                 //Signup
+                 .when("/user/alta/", {
+                    templateUrl: "frontend/modules/user/view/signup.view.html",
+                    controller: "signupCtrl"
+                })
+                //Activar Usuario
+                .when("/user/activar/:token", {
+                    templateUrl: "frontend/modules/main/view/main.view.html",
+                    controller: "verifyCtrl"
+                })
+                
+                //Restore
+                .when("/user/recuperar", {
+                    templateUrl: "frontend/modules/user/view/restore.view.html",
+                    controller: "restoreCtrl"
+                })
+                //ChangePass
+                .when("/user/cambiarpass/:token", {
+                    templateUrl: "frontend/modules/user/view/changepass.view.html",
+                    controller: "changepassCtrl"
+                })
 
                 
                 // else 404

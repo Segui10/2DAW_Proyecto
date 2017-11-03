@@ -2,11 +2,12 @@ app.controller('ofertasCtrl', function ($scope, ofertas) {
     console.log(ofertas.ofertas);
     $scope.filteredOfertas = [];
     $scope.oferta = ofertas.ofertas;
-    $scope.numPerPage = 6;
+    $scope.numPerPage = 12;
     $scope.maxSize = 5;
     $scope.currentPage = 1;
 
     $scope.$watch('currentPage + numPerPage', update);
+    
     
 
     function update() {
@@ -27,10 +28,27 @@ app.controller('ofertasCtrl', function ($scope, ofertas) {
 
 });
 
-app.controller('detailsCtrl', function ($scope, data) {
-    console.log(data);
+app.controller('detailsCtrl', function ($scope, data, ofertas_map) {
+    
     $scope.data = data.ofertas;
-
+    console.log(data);
+    ofertas_map.cargarmap(data.ofertas, $scope);
+    
+       $scope.select = function (id) {
+            for (var i = 0; i < $scope.markers.length; i++) {
+                var marker = $scope.markers[i];
+                if (id == marker.get('id')) {
+                    if (marker.getAnimation() !== null) {
+                        marker.setAnimation(null);
+                    } else {
+                        marker.setAnimation(google.maps.Animation.BOUNCE);
+                        $scope.map.setCenter(marker.latlon);
+                    }
+                    break;
+                }
+            }
+        };
+        
     // $scope.stringAsistentes = $scope.data.asistentes;
     // $scope.data.asistentes = $scope.stringAsistentes.split("-");
     // $scope.UneteV = true;
