@@ -2,7 +2,7 @@ app.controller('ofertasCtrl', function ($scope, ofertas) {
     console.log(ofertas.ofertas);
     $scope.filteredOfertas = [];
     $scope.oferta = ofertas.ofertas;
-    $scope.numPerPage = 12;
+    $scope.numPerPage = 3;
     $scope.maxSize = 5;
     $scope.currentPage = 1;
 
@@ -11,8 +11,9 @@ app.controller('ofertasCtrl', function ($scope, ofertas) {
     
 
     function update() {
-        var begin = (($scope.currentPage - 1) * $scope.numPerPage), end = begin + $scope.numPerPage;
-        console.log($scope.oferta.slice(begin, end));
+        var begin = (($scope.currentPage -1) * $scope.numPerPage), end = begin + $scope.numPerPage;
+        console.log(begin);
+        console.log(end);
        //$scope.filteredOfertas = $scope.oferta;
         $scope.filteredOfertas = $scope.oferta.slice(begin, end);
     }
