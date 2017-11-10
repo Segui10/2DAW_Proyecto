@@ -73,10 +73,10 @@ app.controller('modalWindowCtrl', function ($scope, $uibModalInstance, services,
             //console.log(twitterService.isReady());
             if (twitterService.isReady()) {
                 twitterService.getUserInfo().then(function (data) {
-                    //console.log(data);
-                    services.post("user", 'social_signin', {id: data.id, nombre: data.name, avatar: data.profile_image_url_https, twitter: true})
+                    console.log(data);
+                    services.post("user", 'social_signin', {id: data.id, nombre: data.name, email: data.email, avatar: data.profile_image_url_https, twitter: true})
                     .then(function (response) {
-                        //console.log(response[0]);
+                        console.log(response);
                         if (!response.error) {
                             cookiesService.SetCredentials(response[0]);
                             $scope.close();
@@ -93,13 +93,13 @@ app.controller('modalWindowCtrl', function ($scope, $uibModalInstance, services,
     $scope.loginFb = function () {
         facebookService.login().then(function () {
             facebookService.me().then(function (user) {
-                //console.log(user);
+                console.log(user);
                 if (user.error){
                     $scope.close();
                 }else{
                     services.post("user", 'social_signin', {id: user.id, nombre: user.first_name, apellidos: user.last_name, email: user.email})
                     .then(function (response) {
-                        //console.log(response);
+                        console.log(response);
                         //console.log(response[0]['usuario']);
                         if (!response.error) {
                             cookiesService.SetCredentials(response[0]);
@@ -162,7 +162,7 @@ app.controller('signupCtrl', function ($scope, services, $location, $timeout, Co
             "bank": $scope.signup.inputBank, "dni": $scope.signup.inputDni};
         var data_users_JSON = JSON.stringify(data);
         services.post('user', 'signup_user', data_users_JSON).then(function (response) {
-            //console.log(response);
+            console.log(response);
             if (response.success) {
                 $timeout(function () {
                     $location.path('/');
@@ -242,6 +242,7 @@ app.controller('restoreCtrl', function ($scope, services, $timeout, $location, C
 
     $scope.SubmitRestore = function () {
         var data = {"inputEmail": $scope.restore.inputEmail, "token": 'restore_form'};
+        console.log($scope.restore.inputEmail);
         var restore_form = JSON.stringify(data);
         
         services.post('user', 'process_restore', restore_form).then(function (response) {
@@ -266,6 +267,7 @@ app.controller('restoreCtrl', function ($scope, services, $timeout, $location, C
 });
 
 app.controller('changepassCtrl', function ($route, $scope, services, $location, CommonService) {
+    console.log();
     $scope.token = $route.current.params.token;
     $scope.changepass = {
         inputPassword: ""
@@ -289,7 +291,7 @@ app.controller('changepassCtrl', function ($route, $scope, services, $location, 
 
 app.controller('profileCtrl', function ($scope, UserService, services, user, $location, CommonService, 
 load_pais_prov_poblac, $timeout, cookiesService) {
-    //console.log(user);
+    console.log(user);
     //console.log(user.user.usuario); //yomogan
     
     //admin

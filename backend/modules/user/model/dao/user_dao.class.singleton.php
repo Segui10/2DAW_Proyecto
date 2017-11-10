@@ -14,19 +14,19 @@ class user_dao {
 
     public function create_user_DAO($db, $arrArgument) {
         $usuario = $arrArgument['usuario'];
-        $dni = $arrArgument['dni'];
+        // $dni = $arrArgument['dni'];
         $nombre = $arrArgument['nombre'];
-        $apellidos = $arrArgument['apellidos'];
+        // $apellidos = $arrArgument['apellidos'];
         $email = $arrArgument['email'];
         $password = $arrArgument['password'];
-        $date_birthday = $arrArgument['date_birthday'];
+        // $date_birthday = $arrArgument['date_birthday'];
         $tipo = $arrArgument['tipo'];
-        $bank = $arrArgument['bank'];
+        // $bank = $arrArgument['bank'];
         $avatar = $arrArgument['avatar'];
-        $pais = " ";
-        $provincia = " ";
-        $poblacion = " ";
-        $valoracion = " ";
+        // $pais = " ";
+        // $provincia = " ";
+        // $poblacion = " ";
+        // $valoracion = " ";
         $token = $arrArgument['token'];
         if ($arrArgument['activado'])
             $activado = $arrArgument['activado'];
@@ -36,8 +36,8 @@ class user_dao {
         $sql = "INSERT INTO usuarios (usuario, email, nombre, apellidos, dni,"
                 . " password, date_birthday, tipo, bank, pais, provincia, poblacion, avatar, valoracion, activado, token"
                 . " ) VALUES ('$usuario', '$email', '$nombre',"
-                . " '$apellidos', '$dni', '$password', '$date_birthday', '$tipo', '$bank','$pais','$provincia','$poblacion', '$avatar', '$valoracion', '$activado','$token')";
-        return $db->ejecutar($sql);
+                . " '', '', '$password', '', '$tipo', '','','','', '$avatar', '', '$activado','$token')";
+                return $db->ejecutar($sql);
     }
 
     public function obtain_paises_DAO($url){
