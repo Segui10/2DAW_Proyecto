@@ -291,7 +291,7 @@ app.controller('changepassCtrl', function ($route, $scope, services, $location, 
 
 app.controller('profileCtrl', function ($scope, UserService, services, user, $location, CommonService, 
 load_pais_prov_poblac, $timeout, cookiesService) {
-    console.log(user);
+    //console.log(user);
     //console.log(user.user.usuario); //yomogan
     
     //admin
@@ -416,18 +416,17 @@ load_pais_prov_poblac, $timeout, cookiesService) {
             'success': function (file, response) {
                 //console.log(response);
                 response = JSON.parse(response);
-                //console.log(response);
+               // console.log(response);
                 if (response.resultado) {
                     $(".msg").addClass('msg_ok').removeClass('msg_error').text('Success Upload image!!');
                     $('.msg').animate({'right': '300px'}, 300);
                     
-                    //console.log(response.datos);
                     $scope.user.avatar = response.datos;
-                
+
                     var user = {usuario: $scope.user.usuario, avatar: response.datos, 
                     tipo: $scope.user.tipo, nombre: $scope.user.nombre};
                     cookiesService.SetCredentials(user);
-                    
+                   // console.log(user);
                     UserService.login();
                 } else {
                     $(".msg").addClass('msg_error').removeClass('msg_ok').text(response['error']);
@@ -480,7 +479,7 @@ load_pais_prov_poblac, $timeout, cookiesService) {
         "date_birthday": $scope.user.date_birthday, "bank": $scope.user.bank, "pais": pais,
         "provincia": prov,"poblacion": pob, "avatar": $scope.user.avatar, "tipo": tipo};
         var data1 = JSON.stringify(data);
-        //console.log(data);
+        //console.log(data1);
         
         /*
         "usuario":"yomogan","email":"yomogan@gmail.com","nombre":"yomogan","apellidos":"yomogan","dni":"48287734Q","password":"",
@@ -496,18 +495,19 @@ load_pais_prov_poblac, $timeout, cookiesService) {
 
         services.put("user", "modify", data1).then(function (response) {
             //console.log(response);
-            //console.log(response.user[0].usuario);
+             //console.log(response.user[0].avatar);
             
-            //limpiar el avatar de :80
+            // limpiar el avatar de :80
             var avatar = response.user[0].avatar;
             var buscar = avatar.indexOf(":80");
             if(buscar !== -1){
                 var avatar = avatar.replace(":80", "");
                 response.user[0].avatar = avatar;
             }
-            console.log(response.user[0].avatar);
+            
 
             if (response.success) {
+                console.log(response.user[0].avatar);
                 cookiesService.SetCredentials(response.user[0]);
                 UserService.login();
                 if (tipo === "client") {
@@ -523,7 +523,7 @@ load_pais_prov_poblac, $timeout, cookiesService) {
                 }
             } else {
                 if (response.datos){
-                    //console.log(response.datos);
+                    console.log(response.datos);
                     $scope.AlertMessage = true;
                     $timeout(function () {
                         $scope.AlertMessage = false;

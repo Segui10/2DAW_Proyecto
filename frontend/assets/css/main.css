@@ -3833,7 +3833,7 @@
 		float: left;
 		padding-top: 5px;
 		background-color: #505393;
-		height: 160px;
+		height: 200px;
 		width: 49%;
 	}
 	.imagen{
@@ -3845,13 +3845,34 @@
 	}
 
 	.nombre{
+		margin-top: 0px;
 		font-size: 20px;
 		padding: 5px;
+		padding-right: 120px;
 		margin-left: 10px;
 		background-color: #3a3c6a;
 		float: left;
 	}
 
+	
+
 	#pager{
 		padding-right: 80%;
 	}
+
+	.contentof{
+		border: 6px solid #3a3c6a;
+		border-radius: 25px;
+		width: 70%;
+		margin-left: 20px;
+		padding: 10px;
+		background-color: #505393;
+	}
+.imageof{
+	margin: 5px;
+	margin-right: 20px;
+	margin-top: 0px;
+	height: 300px;
+	width: 300px;
+	float: left;
+}
