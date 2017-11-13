@@ -1,5 +1,5 @@
 app.factory("services", ['$http','$q', function ($http, $q) {
-    var serviceBase = '/2DAW_Proyecto-master/backend/index.php?module=';
+    var serviceBase = '/2DAW_Proyecto/backend/index.php?module=';
     var obj = {};
         
         obj.get = function (module, functi) {

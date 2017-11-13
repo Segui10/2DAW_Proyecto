@@ -2360,7 +2360,7 @@
 
 		}
 
-/* Features */
+/* features */
 
 	.features {
 		display: -moz-flex;
@@ -2386,10 +2386,11 @@
 			position: relative;
 			text-align: left;
 			width: 25%;
+			border: 5px solid #505393;
 		}
 
 		.features li:hover {
-			border: 1.5px solid white;
+			border: 5px solid white;
 		}
 		
 		li p{
@@ -3875,4 +3876,11 @@
 	height: 300px;
 	width: 300px;
 	float: left;
+}
+
+
+.menuhead{
+	padding: 10px;
+	height: 80px!important;
+	
 }
